@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RickAndMorthyApp.CharacterInfo">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                BorderColor="DarkRed"
+                HasShadow="True"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0">
+                <Image
+                    Source="{Binding Image}"
+                    Aspect="AspectFit"
+                    WidthRequest="200"
+                    HeightRequest="200"/>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

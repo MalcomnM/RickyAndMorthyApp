@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RickAndMorthyApp.Utilities"
+             x:Class="RickAndMorthyApp.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConverter x:Key="stringToColor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Frame
+            BackgroundColor="Blue"
+            Padding="0"
+            CornerRadius="0">
+            <Label
+                Text="Rick and Morty Character List"
+                HorizontalTextAlignment="Center"
+                TextColor="White"
+                FontSize="30"/>
+        </Frame>
+        <StackLayout>
+            <CollectionView
+                x:Name="LstCharacters"
+                ItemsSource="{Binding CharacterList}"
+                RemainingItemsThreshold="{Binding ItemTreshold}"
+                RemainingItemsThresholdReachedCommand="{Binding ItemTresholdReachedCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            HasShadow="True"
+                            BackgroundColor="AliceBlue">
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontAttributes="Bold"
+                                    FontSize="14">
+                                </Label>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Path=BindingContext.TapCharacterCommand, Source={x:Reference Name=LstCharacters}}"
+                                    NumberOfTapsRequired="1"
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
